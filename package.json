@@ -1,0 +1,43 @@
+{
+  "name": "micro-app-demo",
+  "version": "1.0.0",
+  "description": "micro-app-demo",
+  "main": "index.js",
+  "author": "tongning",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "bootstrap": "yarn && npm-run-all --serial install:*",
+    "install:main-app": "cd main_app && yarn",
+    "install:child-sidebar": "cd child_apps/sidebar && yarn",
+    "install:child-vite-vue3": "cd child_apps/vite-vue3 && yarn",
+    "install:child-vue2": "cd child_apps/vue2 && yarn",
+    "dev": "npm-run-all -p dev:main-app dev:child-sidebar dev:child-vite dev:child-vue2",
+    "dev:all": "yarn dev:main-app & yarn dev-child:sidebar & yarn dev-child:vite & yarn dev-child:vue2",
+    "dev:main-app": "cd main_app && yarn dev",
+    "dev:child-sidebar": "cd child_apps/sidebar && yarn dev",
+    "dev:child-vite": "cd child_apps/vite-vue3 && yarn dev",
+    "dev:child-vue2": "cd child_apps/vue2 && yarn dev",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/micro-zoe/micro-app-demo.git"
+  },
+  "keywords": [
+    "micro-app",
+    "demo"
+  ],
+  "bugs": {
+    "url": "https://github.com/micro-zoe/micro-app-demo/issues"
+  },
+  "homepage": "https://github.com/micro-zoe/micro-app-demo#readme",
+  "dependencies": {
+    "@micro-zoe/micro-app": "latest"
+  },
+  "devDependencies": {
+    "cross-env": "~7.0.3",
+    "express": "~4.17.1",
+    "npm-run-all": "~4.1.5"
+  }
+}
