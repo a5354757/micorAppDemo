@@ -31,7 +31,7 @@ const sidebarData = {
       router.push(path)
     } else {
       let childPath = null
-      // child-vite 和 child-react17子应用是hash路由，hash值就是它的页面地址，这里单独处理
+      // child-vite 子应用是hash路由，hash值就是它的页面地址，这里单独处理
       if (hash) {
         childPath = hash
       } else {

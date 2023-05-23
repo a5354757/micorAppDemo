@@ -1,6 +1,6 @@
 <template>
   <div id="vue2-app">
-    <div id='public-links' @click="onRouteChange">
+    <div id="public-links" @click="onRouteChange">
       <router-link to="/">Home</router-link> |
       <router-link to="/page2">Page2</router-link>
     </div>
@@ -10,19 +10,24 @@
 
 <script>
 export default {
-  name: 'App',
+  name: "App",
+  data() {
+    return {
+      microAppData: {}
+    }
+  },
   methods: {
     // 子应用内部跳转时，通知侧边栏改变菜单状态
-    onRouteChange () {
-      console.log('是否为子应用', window.__MICRO_APP_ENVIRONMENT__);
+    onRouteChange() {
+      console.log("是否为子应用", window.__MICRO_APP_ENVIRONMENT__);
 
       if (window.__MICRO_APP_ENVIRONMENT__) {
         // 发送全局数据，通知侧边栏修改菜单展示
-        window.microApp.setGlobalData({ name: window.__MICRO_APP_NAME__ })
+        window.microApp.setGlobalData({ name: window.__MICRO_APP_NAME__ });
       }
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style>

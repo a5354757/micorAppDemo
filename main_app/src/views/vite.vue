@@ -20,7 +20,7 @@
 import { EventCenterForMicroApp } from '@micro-zoe/micro-app'
 import config from '../config'
 
-// @ts-ignore 因为vite子应用关闭了沙箱，我们需要为子应用appname-vite创建EventCenterForMicroApp对象来实现数据通信
+// @ts-ignore 因为vite子应用关闭了沙箱，我们需要为子应用appname-vite创建 EventCenterForMicroApp 对象来实现数据通信
 window.eventCenterForAppNameVite = new EventCenterForMicroApp('appname-vite')
 
 export default {
@@ -33,7 +33,7 @@ export default {
   },
   methods: {
     handleCreate (): void {
-      console.log('child-vite 创建了')
+      console.log('child-vite-vue3 创建了')
     },
 
     handleBeforeMount (): void {

@@ -20,7 +20,7 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('./views/vue2.vue'),
   }
 ]
-console.log(import.meta.env, 'import.meta.env');
+// console.log(import.meta.env, 'import.meta.env');
 
 const router = createRouter({
   // 设置主应用基础路由为main-vite(用于后续部署)，则子应用基础路由(baseroute)为/main-vite/xxx

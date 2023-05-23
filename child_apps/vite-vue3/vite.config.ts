@@ -5,6 +5,10 @@ import { writeFileSync } from 'fs'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  server: {
+    host: true,
+    port: 4007,
+  },
   plugins: [
     vue(),
     (function () {
@@ -58,9 +62,7 @@ export default defineConfig({
       }
     })() as any,
   ],
-  server: {
-    port: 4007,
-  },
+
   base: `${process.env.NODE_ENV === 'production' ? 'http://www.micro-zoe.com' : ''}/child/vite/`,
   build: {
     outDir: 'vite',

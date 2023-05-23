@@ -9,7 +9,8 @@ export default defineConfig({
     outDir: 'main-app',
   },
   server: {
-    port: 3000,
+    host: true,
+    port: 9527,
     open: true,
   },
   resolve: {

@@ -12,10 +12,11 @@
 // 子应用内部跳转时，通知侧边栏改变菜单状态
 const onRouteChange = () => {
   if (window.eventCenterForAppNameVite) {
-    // 发送全局数据，通知侧边栏修改菜单展示
+    // 发送全局数据
     window.eventCenterForAppNameVite.setGlobalData({ name: 'child-vite' })
   }
 }
+
 </script>
 
 <style>
