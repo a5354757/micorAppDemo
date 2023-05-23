@@ -1,9 +1,5 @@
 # 简介
-micro-app-demo 作为 [micro-app](https://github.com/micro-zoe/micro-app) 的案例仓库，举例了 `react`, `vue`, `angular`, `nextjs`, `nuxtjs`, `vite` 如何作为主应用和子应用接入微前端，并在尽可能改动少量的代码的情况下做出尽可能完善的功能。
-
 micro-app-demo中所有项目都是使用官方脚手架创建的，它们足够精简，你完全可以将其中的demo作为基础进一步开发自己的项目。
-
-**线上地址：** http://www.micro-zoe.com/main-vue2/
 
 # 目录结构
 ```
@@ -34,18 +30,18 @@ yarn bootstrap
 ## 2、运行项目
 各主应用都监听了3000端口，所以只能同时启动一个主应用，而子应用端口各不相同，可以同时启动。
 
-**1、启动 vite 主应用**
+**1、启动应用**
 
 ```bash
-yarn dev:main-vite
+yarn dev:all
 ```
 
 访问：`http://localhost:3000/main-vite`
 
-此时分别运行 `main_apps/vite-vue3` 以及 `child_apps` 文件夹下的所有子应用。
+此时分别运行 `main_app` 以及 `child_apps` 文件夹下的所有子应用。
 
 ## 效果如下：
-![](./example.png)
+![](./example.jpg)
 
 
 # 补充
