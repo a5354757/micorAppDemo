@@ -1,5 +1,5 @@
 module.exports = {
-  outputDir: 'vue2',
+  outputDir: 'dist-vue2',
   publicPath: '/child/vue2/',
   productionSourceMap: false,
   devServer: {

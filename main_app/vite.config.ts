@@ -6,7 +6,7 @@ import vue from '@vitejs/plugin-vue'
 export default defineConfig({
   base: '/main-app', // 主应用路由
   build: {
-    outDir: 'main-app',
+    outDir: 'dist-mainApp',
   },
   server: {
     host: true,

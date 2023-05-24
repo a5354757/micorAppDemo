@@ -4,6 +4,10 @@ import router from './router'
 import microApp from '@micro-zoe/micro-app'
 
 microApp.start({
+  globalAssets: {
+    js: ['../common/lodash.js'],
+    css: ['../common/style.css'],
+  },
   plugins: {
     modules: {
       'appname-vite': [
