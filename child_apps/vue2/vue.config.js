@@ -5,7 +5,6 @@ module.exports = {
   devServer: {
     hot: false,
     disableHostCheck: true,
-    host: true,
     port: 4008,
     open: false,
     overlay: {
