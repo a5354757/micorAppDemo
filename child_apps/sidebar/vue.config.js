@@ -1,6 +1,6 @@
 module.exports = {
   publicPath: '/child/sidebar/',
-  outputDir: 'dist-sidebar',
+  outputDir: 'child-sidebar',
   productionSourceMap: false,
   devServer: {
     hot: true,

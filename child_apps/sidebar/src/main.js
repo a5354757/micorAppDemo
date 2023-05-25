@@ -2,8 +2,8 @@ import "./public-path";
 import Vue from "vue";
 import { Menu, Submenu, MenuItem } from "element-ui";
 import App from "./App.vue";
-import "../../../main_app/common/style.css";
-import * as lodash from "../../../main_app/common/lodash.js";
+import "../../../main_app/src/common/style.css";
+import * as lodash from "../../../main_app/src/common/lodash.js";
 const num = lodash.add(1, 2);
 console.log(num, 'num');
 

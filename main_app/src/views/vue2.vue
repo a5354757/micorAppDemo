@@ -1,6 +1,7 @@
 <template>
   <div>
     <!-- baseroute 为主应用路由拼接子应用路由 -->
+    <!-- disableScopecss -->
     <micro-app
       name='appname-vue2'
       :url='url'

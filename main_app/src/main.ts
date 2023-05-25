@@ -4,6 +4,23 @@ import router from './router'
 import microApp from '@micro-zoe/micro-app'
 
 microApp.start({
+  lifeCycles: {
+    created (e) {
+      console.log('全局监听created', e)
+    },
+    beforemount (e) {
+      console.log('beforemount')
+    },
+    mounted (e) {
+      console.log('mounted')
+    },
+    unmount (e) {
+      console.log('unmount')
+    },
+    error (e) {
+      console.log('error')
+    }
+  },
   globalAssets: {
     js: ['../common/lodash.js'],
     css: ['../common/style.css'],

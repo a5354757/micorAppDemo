@@ -12,24 +12,24 @@
       <!-- 菜单(el-submenu) index为子应用名称，子菜单(el-menu-item) index为路由地址 -->
       <el-submenu index="appname-vue2">
         <template slot="title">
-          <span class='submenu-text'>child-vue2</span>
+          <span class="submenu-text">child-vue2</span>
         </template>
         <el-menu-item index="/app-vue2">
-          <span class='menu-item-text'>home</span>
+          <span class="menu-item-text">home</span>
         </el-menu-item>
         <el-menu-item index="/app-vue2/page2">
-          <span class='menu-item-text'>page2</span>
+          <span class="menu-item-text">page2</span>
         </el-menu-item>
       </el-submenu>
       <el-submenu index="appname-vite">
         <template slot="title">
-          <span class='submenu-text'>child-vite</span>
+          <span class="submenu-text">child-vite</span>
         </template>
         <el-menu-item index="/app-vite">
-          <span class='menu-item-text'>home</span>
+          <span class="menu-item-text">home</span>
         </el-menu-item>
         <el-menu-item index="/app-vite/page2">
-          <span class='menu-item-text'>page2</span>
+          <span class="menu-item-text">page2</span>
         </el-menu-item>
       </el-submenu>
     </el-menu>
@@ -37,78 +37,84 @@
 </template>
 
 <script>
-
 export default {
-  name: 'App',
-  data () {
+  name: "App",
+  data() {
     return {
-      activeIndex: '/', // 当前激活菜单的 index
-    }
+      activeIndex: "/", // 当前激活菜单的 index
+    };
   },
-  created () {
-    this.getActiveIndex()
+  created() {
+    this.getActiveIndex();
 
     // 监听浏览器前进后退按钮，激活对应菜单
-    window.addEventListener('popstate', () => this.getActiveIndex())
+    window.addEventListener("popstate", () => this.getActiveIndex());
 
     // 判断微前端环境
     if (window.__MICRO_APP_ENVIRONMENT__) {
       // 获取基座下发的数据
-      this.microAppData = window.microApp.getData()
+      this.microAppData = window.microApp.getData();
+
+      // 监听基座发送的数据
+      window.microApp.addDataListener(this.dataListener);
 
       // 全局数据监听，监听来自其它子应用页面跳转，控制侧边栏的菜单展示
       // 因为子应用之间无法直接通信，这里采用全局数据通信
       window.microApp.addGlobalDataListener((data) => {
-        console.log('全局数据:', data)
-        this.getActiveIndex()
-      })
+        console.log("全局数据:", data);
+        this.getActiveIndex();
+      });
     }
   },
   methods: {
+    dataListener(data) {
+      console.log("来自基座应用的数据", data);
+    },
     // 根据url地址获取选中菜单
-    getActiveIndex () {
+    getActiveIndex() {
       // location.pathname的值通常为：/app-vue2/page2，我们只取`/app-vue2/page2`
-      const pathArr = location.pathname.match(/\/app-.+/)
-      this.activeIndex = pathArr ? pathArr[0].replace(/\/$/, '') : '/'
+      const pathArr = location.pathname.match(/\/app-.+/);
+      this.activeIndex = pathArr ? pathArr[0].replace(/\/$/, "") : "/";
 
-      let hash = ''
+      let hash = "";
       if (location.hash) {
-        hash = location.hash.split('?')[0]
+        hash = location.hash.split("?")[0];
       }
       // 兼容 child-vite 和 child-react17 子应用，因为它们是hash路由
       if (
-        (this.activeIndex === '/app-vite' || this.activeIndex === '/app-react17') &&
-        hash.includes('page2')
+        (this.activeIndex === "/app-vite" ||
+          this.activeIndex === "/app-react17") &&
+        hash.includes("page2")
       ) {
-        this.activeIndex += hash.replace(/^#/, '')
+        this.activeIndex += hash.replace(/^#/, "");
       }
 
       // 去除斜线后缀，如：/app-vue2/ 转换为 /app-vue2
-      if (this.activeIndex !== '/') {
-        this.activeIndex = this.activeIndex.replace(/\/$/, '')
+      if (this.activeIndex !== "/") {
+        this.activeIndex = this.activeIndex.replace(/\/$/, "");
       }
 
-      return this.activeIndex
+      return this.activeIndex;
     },
     // 用户点击菜单时控制基座应用跳转
-    select (index, indexPath) {
+    select(index, indexPath) {
       if (this.microAppData) {
         // 因为 child-vite 和 child-react17 子应用是hash路由，所以需要传递hash值
-        let hash = null
-        if (index === '/app-vite/page2' || index === '/app-react17/page2') {
-          const pathArr = index.split('/')
-          index = '/' + pathArr[1]
-          hash = '/' + pathArr[2]
+        let hash = null;
+        if (index === "/app-vite/page2" || index === "/app-react17/page2") {
+          const pathArr = index.split("/");
+          index = "/" + pathArr[1];
+          hash = "/" + pathArr[2];
         }
 
         // 获取子应用appName
-        const appName = indexPath[0]
+        const appName = indexPath[0];
         // 控制基座跳转页面，并渲染子应用
-        this.microAppData.pushState(appName, index, hash)
+        this.microAppData.pushState(appName, index, hash);
       }
     },
-  }
-}
+  },
+};
 </script>
 
 <style>

@@ -3,7 +3,7 @@
     <img alt="Vue logo" src="../assets/logo.png">
     <h1>子应用 -- Vue@{{version}}</h1>
     <button @click="sendMsg">向基座应用发送数据</button>
-    <div class="mt-16"><button @click="getData">获取全局数据</button></div>
+    <div class="mt-16"><button @click="getData">获取数据</button></div>
     <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
   </div>
 </template>
@@ -28,7 +28,9 @@ export default {
     },
     getData() {
       const data = window.microApp.getData()
+      const globalData = window.microApp.getGlobalData() // 返回全局数据
       console.log('获取基座传入数据', data);
+      console.log('全局数据:', globalData);
     }
   },
 }
